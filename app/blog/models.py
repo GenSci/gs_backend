@@ -23,6 +23,8 @@ from wagtail.api import APIField
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+from rest_framework.fields import DateField, DateTimeField
+
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 
 from streams.blocks import CardBlock, RichtextBlock, TitleAndTextBlock
@@ -183,6 +185,8 @@ class BlogDetailPage(Page):
         APIField("post_summary"),
         APIField("content"),
         APIField("categories"),
+        APIField('first_published_at',
+                 serializer=DateTimeField(format='%A, %h %d, %Y %I:%M %P'))
     ]
 
     class Meta:
