@@ -9,7 +9,7 @@ version: '3.1'
 
 services:
     # First we will define the container for our Django application
-    app:
+    gs_app:
         restart: always
         build:
             context: ./app/ # This building process will ensure we build a
@@ -21,7 +21,7 @@ services:
             - "9000:9000"
             - "8765:8765" # useful for using the django development server
         depends_on:
-            - postgres
+            - gs_postgres
         expose:
             - "9000"
         env_file:
@@ -29,13 +29,13 @@ services:
 
 
     # Defining our NGINX Web Server container
-    nginx:
+    gs_nginx:
         restart: always
         build:
             context: ./nginx/ # We build this so we can create the log files
                         # and esure we use the correct configuration.
         depends_on:
-            - app
+            - gs_app
         volumes:
             - ./app:/www
             - /home/logs/
@@ -43,14 +43,14 @@ services:
             - "8000:8000"
 
     # # Defining our database server container.
-    postgres:
+    gs_postgres:
         restart: always
         image: postgres:12
         volumes:
             - pg-data:/var/lib/postgresql/data
             - ./postgres:/docker-entrypoint-initdb.d/
         ports:
-            - "5466:5432" # This allows us to examine our database 
+            - "5466:5432" # This allows us to examine our database
         env_file:
           - .env
   # Defining our Redis container, which we will use for caching and
