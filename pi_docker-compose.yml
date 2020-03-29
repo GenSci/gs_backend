@@ -10,7 +10,7 @@ version: '3.1'
 services:
 
     # First we will define the container for our Django application
-    app:
+    gs_app:
         restart: always
         build:
             context: ./app
@@ -19,7 +19,7 @@ services:
         volumes:
             - ./app/:/code
         depends_on:
-            - postgres
+            - gs_postgres
         ports:
             - "9000:9000"
         expose:
@@ -30,13 +30,13 @@ services:
 
 
     # Defining our NGINX Web Server container
-    nginx:
+    gs_nginx:
         restart: always
         build:
             context: ./nginx
             dockerfile: piDockerfile
         depends_on:
-            - app
+            - gs_app
         volumes:
             - ./app/static:/www/static
             - ./app/media:/www/media
@@ -44,7 +44,7 @@ services:
             - "80:80"
 
     # Defining our database server container.
-    postgres:
+    gs_postgres:
         restart: always
         image: tobi312/rpi-postgresql:latest # Getting the most up-to-date and cool postgres server instance.
         volumes:
