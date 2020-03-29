@@ -10,7 +10,6 @@ version: '3.1'
 services:
     # First we will define the container for our Django application
     app:
-        container_name: gs_app
         restart: always
         build:
             context: ./app/ # This building process will ensure we build a
@@ -31,7 +30,6 @@ services:
 
     # Defining our NGINX Web Server container
     nginx:
-        container_name: gs_webserver
         restart: always
         build:
             context: ./nginx/ # We build this so we can create the log files
@@ -46,7 +44,6 @@ services:
 
     # # Defining our database server container.
     postgres:
-        container_name: gs_db
         restart: always
         image: postgres:12
         volumes:

@@ -14,7 +14,7 @@ services:
         restart: always
         build:
             context: ./app
-            dockerfile: piDockerfile
+            dockerfile: Dockerfile
         command: bash run_web.sh
         volumes:
             - ./app/:/code
