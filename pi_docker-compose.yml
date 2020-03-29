@@ -41,7 +41,7 @@ services:
             - ./app/static:/www/static
             - ./app/media:/www/media
         ports:
-            - "80:80"
+            - "80:8000"
 
     # Defining our database server container.
     gs_postgres:
