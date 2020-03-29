@@ -48,7 +48,6 @@ services:
         restart: always
         image: tobi312/rpi-postgresql:latest # Getting the most up-to-date and cool postgres server instance.
         volumes:
-            - ./postgres/:/docker-entrypoint-initdb.d
             - pg-data:/var/lib/postgresql/data
         ports:
             - "5466:5432" # This allows us to examine our database server
