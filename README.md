@@ -13,13 +13,11 @@ Based on the successes I have had in the past, I will be making extensive use of
 ## Components
 All components listed here will have their own Docker containers
 * DB:  [PostgreSQL](https://www.postgresql.org/)
-* Web application:  [Django Python web framework](https://www.djangoproject.com/) + [Gunicorn](http://gunicorn.org/)
+* Web application:  [Wagtail CMS web framework](https://www.djangoproject.com/) + [Gunicorn](http://gunicorn.org/)
 * Web Server: [NGINX](https://www.nginx.com/)
 
 
-**Disclamer 2:** My knowledge of any of the above components are relatively thin.  I enjoy developing in the Django framework and have cobbled together a set of tools that allow me to do some nifty things with it.  I realize there is likely much more I could do to optimize any specific component and I would welcome any *helpful* suggestions.
+**Disclamer 2:** My knowledge of any of the above components are relatively thin.  I enjoy developing in the Wagtail framework and have cobbled together a set of tools that allow me to do some nifty things with it.  I realize there is likely much more I could do to optimize any specific component and I would welcome any *helpful* suggestions.
 
-I may try to start using Angulaer as a front end (and use
- Django-Rest-Framework for the back end) but for now I will stick
- with the very useful Django templates and incorporate Google's
- Material Design principles.
+I am using this stack to deploy a REST API server that will serve up the content for Gentlemen Scientists.  The front end will be handled by a Vue based project and can be found in the gs_frontend repo.
+
